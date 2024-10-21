@@ -331,7 +331,7 @@ apt update
 apt install curl -y
 ```
 
-Run curl on the localhost (container) to verify the http installation.
+Run curl on the localhost (container) to verify the httpd installation.
 ```
 curl localhost 
 exit
