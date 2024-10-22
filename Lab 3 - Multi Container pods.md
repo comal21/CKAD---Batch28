@@ -38,7 +38,7 @@ curl localhost
 kubectl exec -it sidecar-pod -c main-container -- sh
 ```
 ```
-curl
+curl localhost
 ```
 ```
 kubectl delete -f sidecar.yaml
