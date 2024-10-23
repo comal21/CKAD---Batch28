@@ -287,7 +287,12 @@ kubectl replace -f web-green.yaml --force
 kubectl replace -f web-blue.yaml --force
 ```
 In the yaml file of Service change the Selector to 'type: web-app` and replace.
-
+```
+ kubectl apply -f svc-web.yaml
+```
+```
+kubectl describe svc svc-web
+```
 Check the endpoints of the service. It should show all the pods of both the deployments.
 ```
 kubectl get ep svc svc-web
