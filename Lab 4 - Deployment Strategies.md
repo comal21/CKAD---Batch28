@@ -86,7 +86,7 @@ To check the history of a particular revision
 kubectl rollout history deploy dep1 --revision=<revision-number>
 ```
 
-### Task 2: Recreate Strategy in Kubernetes 
+### Task 2: Recreate Strategy in Kubernetes (Self Excecise)
 ```
 vi recreate.yaml
 ```
