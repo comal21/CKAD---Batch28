@@ -316,7 +316,7 @@ env
 ### Inject PARTICULAR variables from Secret(FromLiteral) into POD
 Create secret as shown below
 ```
-vi sc-pod-2
+vi sc-pod-2.yaml
 ```
 
 ```yaml
