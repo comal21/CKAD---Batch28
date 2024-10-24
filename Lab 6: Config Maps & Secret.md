@@ -214,7 +214,7 @@ cd /app
 cat token
 ```
 
-### Task 6 : Secret
+### Task 5: Secret
 ## Imperative
 ```
 kubectl create secret generic secret-1 --from-literal=db_user=admin --from-literal=db_pwd=123
