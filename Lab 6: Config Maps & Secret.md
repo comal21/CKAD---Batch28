@@ -312,16 +312,7 @@ echo $password
 ```
 env 
 ```
-### Create a Secret
-```
-kubectl create secret generic secret-1 --from-literal=db_user=admin --from-literal=db_pwd=123
-```
-```
-kubectl get secret
-```
-```
-kubectl describe secret secret-1
-```
+
 ### Inject PARTICULAR variables from Secret(FromLiteral) into POD
 Create secret as shown below
 ```
