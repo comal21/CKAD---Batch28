@@ -152,64 +152,7 @@ echo $db_password
 ```
 env | grep db_
 ```
-### Task 4: Inject variables from ConfigMaps(FromFile) into POD.
-Create a file
-```
-vi token
-```
-```
-This is CKAD Training. We are practicing Injecting variables from ConfigMaps(FromFile) into POD.
-```
-Create a ConfigMap
-```
-kubectl create cm file-cm --from-file=token         #--from-file=<filen-name>. This file name acts as the key
-```
-```
-kubectl get cm
-```
-```
-kubectl describe cm file-cm 
-```
-Inject particular variable from the ConfigMap into the Pod Yaml File
-```
-vi file-cm-env.yaml
-```
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  labels:
-    app: web
-  name: web-pod-3
-spec:
-  containers:
-  - image: httpd
-    name: ctr-1
-    ports:
-    - containerPort: 80
-    envFrom:
-    - configMapRef:
-        name: file-cm
-```
-```
-kubectl apply -f file-cm-env.yaml
-```
-```
-kubectl describe pod web-pod-3
-```
-Enter the pod and check if the variable has been passed correctly or not
-```
-kubectl exec -it web-pod-3 --  bash
-```
-```
-echo $token
-```
-```
-env | grep token
-```
-
-### Task 5 : Injecting ConfigMap as volume mount
-If already created `file-cm` configmap  then ignore the below step
+### Task 4 : Injecting ConfigMap as volume mount
 
 Create a file
 ```
@@ -272,7 +215,7 @@ cat token
 ```
 
 ### Task 6 : Secret
-Imperative
+## Imperative
 ```
 kubectl create secret generic secret-1 --from-literal=db_user=admin --from-literal=db_pwd=123
 ```
@@ -282,7 +225,7 @@ kubectl get secret
 ```
 kubectl describe secret secret-1
 ```
-Declrative
+### Declrative
 ```
 vi secret.yaml
 ```
@@ -321,7 +264,7 @@ kubectl describe secrets mysql-credentials
 ```
 You can inject the secret in all the three ways as above.
 
-Injecting all values
+### Task: Injecting all values
 ```
 vi sc-pod.yaml
 ```
