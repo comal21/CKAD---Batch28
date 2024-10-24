@@ -367,7 +367,7 @@ env | grep db_
 ```
 exit
 ```
-### Injecting ConfigMap as volume mount
+### Injecting Secret as volume mount
 Create a file
 ```
 vi token
