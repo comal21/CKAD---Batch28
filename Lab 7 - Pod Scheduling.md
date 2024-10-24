@@ -201,6 +201,7 @@ kubectl get pods --output=wide
 ```
 #### Node Anti Affinity
 Create a Pod with Node Anti Affinity
+Requires the Pod to be scheduled on nodes that do not have the label disktype set to hdd
 ```
 vi na-nginx.yaml
 ```
@@ -258,7 +259,8 @@ kubectl get pods -o wide
 
 ```
 
-Now create pod with Pod Affinity
+### Now create pod with Pod Affinity
+Specifies that the Pod should be scheduled on the same node as other Pods with the label app set to pa-nginx-app. This is required during scheduling but ignored during execution.
 ```
 vi pod-affinity.yaml
 ```
@@ -280,7 +282,7 @@ spec:
             operator: In
             values:
             - pa-nginx-app
-        topologyKey: kubernetes.io/hostname
+        topologyKey: kubernetes.io/hostname //Specifies that the affinity rule applies within the same node
 ```
 ```
 kubectl apply -f pod-affinity.yaml
@@ -289,6 +291,7 @@ kubectl apply -f pod-affinity.yaml
 kubectl get pods -o wide
 ```
 Notice both the Pods are in the same Node
+In summary, this Pod is configured to run an Nginx container and is scheduled to co-locate with other Pods labeled as pa-nginx-app on the same node.
 
 #### Pod Anti Affinity
 
@@ -331,5 +334,7 @@ kubectl apply -f  pod-antiaff.yaml
 ```
 kubectl get pod -o wide 
 ```
+Specifies that the Pods should not be scheduled on the same node as other Pods with the label app set to pa-nginx-app.
+In summary, this Deployment creates and manages 3 replicas of an Nginx Pod, ensuring that these Pods are not scheduled on the same node as any Pods labeled pa-nginx-app.
 
 
